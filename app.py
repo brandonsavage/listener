@@ -75,7 +75,7 @@ class FetchTransformSaveApp(App):
     required_config.producer_consumer.add_option(
       'producer_consumer_class',
       doc='the class implements a threaded producer consumer queue',
-      default='socorro.lib.threaded_task_manager.ThreadedTaskManager',
+      default='lib.threaded_task_manager.ThreadedTaskManager',
       from_string_converter=class_converter
     )
 
@@ -168,3 +168,6 @@ class FetchTransformSaveApp(App):
         self._setup_source_and_destination()
         self.task_manager.blocking_start(waiting_func=self.waiting_func)
         self._cleanup()
+        
+if __name__ == '__main__':
+    main(FetchTransformSaveApp)
